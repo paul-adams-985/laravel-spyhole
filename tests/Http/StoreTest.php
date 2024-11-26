@@ -20,9 +20,8 @@ class StoreTest extends TestCase
 
     /**
      * This test check if can correctly store a request with recording.
-     * @test
      */
-    public function can_store_first_recording_request()
+    public function test_can_store_first_recording_request()
     {
         $this->assertFalse(config('laravel-spyhole.track_request_session_id'));
 
@@ -72,9 +71,8 @@ class StoreTest extends TestCase
 
     /**
      * This test check if the fake session id is kept between calls.
-     * @test
      */
-    public function can_store_recordings_keeping_generated_session_id()
+    public function test_can_store_recordings_keeping_generated_session_id()
     {
         $this->assertFalse(config('laravel-spyhole.track_request_session_id'));
 
@@ -136,9 +134,8 @@ class StoreTest extends TestCase
 
     /**
      * This test check if can correctly store frames into the same row of an existing session.
-     * @test
      */
-    public function can_store_frames_for_a_started_session()
+    public function test_can_store_frames_for_a_started_session()
     {
         $recording = new SessionRecording();
         $recording->recordings = [
@@ -201,9 +198,8 @@ class StoreTest extends TestCase
 
     /**
      * This test check if can correctly store the user id while the configuration option is enabled.
-     * @test
      */
-    public function can_store_recording_with_logged_in_user()
+    public function test_can_store_recording_with_logged_in_user()
     {
         config()->set('laravel-spyhole.record_user_id', true);
 
@@ -256,9 +252,8 @@ class StoreTest extends TestCase
 
     /**
      * This test check if can correctly store the user id while the configuration option is enabled.
-     * @test
      */
-    public function can_store_correct_session_id()
+    public function test_can_store_correct_session_id()
     {
         config()->set('laravel-spyhole.track_request_session_id', true);
 
@@ -325,6 +320,16 @@ class FakeUser implements Authenticatable
     public function getAuthPassword(): string
     {
         return 'password';
+    }
+
+    /**
+     * Get the password attribute name.
+     *
+     * @return string
+     */
+    public function getAuthPasswordName(): string
+    {
+        return 'password'; // Or whatever field name you use for passwords
     }
 
     public function getRememberToken(): string
